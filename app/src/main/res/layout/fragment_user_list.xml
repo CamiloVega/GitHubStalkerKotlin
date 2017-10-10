@@ -1,0 +1,35 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@android:color/white"
+    tools:context="cvdevelopers.githubstalker.ui.fragments.UserListFragment">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/fragment_toolbar" />
+
+    <LinearLayout
+        android:id="@+id/current_user_cell"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_name_cell_height"
+        android:visibility="gone"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/current_user_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/user_name_cell_margin"
+            tools:text="Camilo Vega " />
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/user_list_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
+</LinearLayout>
