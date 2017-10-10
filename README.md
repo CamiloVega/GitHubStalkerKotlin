@@ -7,6 +7,7 @@ Given that it covers several aspects of App development I decided to do it again
 * Dagger2
 * Butterknife
 * Picasso
+* MVP Pattern
 
 The full description of the excercise is the Following
 
