@@ -7,6 +7,11 @@ import com.squareup.picasso.Cache
 import java.util.LinkedHashMap
 
 class ImageCache : Cache {
+    override fun clearKeyUri(keyPrefix: String?) {
+        cacheMap.keys
+                .filter { it.contains(keyPrefix as CharSequence)}
+                .forEach { cacheMap.remove(it) }
+    }
 
     private val cacheMap = LinkedHashMap<String, Bitmap>()
 

@@ -24,11 +24,11 @@ class UserViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
     fun bindToUser(user: User, onClickListener: (User) -> Unit, imageLoader: ImageLoader?) {
         this.user = user
-        userName?.text = user.name
+        userName.text = user.name
         imageLoader?.loadCircularImage(user.profileURL, profilePic)
         if (user.numberOfFollowers > 0) {
             followingBadge.visibility = View.VISIBLE
-            followingBadge?.text = user.numberOfFollowers.toString()
+            followingBadge.text = user.numberOfFollowers.toString()
         } else {
             followingBadge.visibility = View.GONE
         }

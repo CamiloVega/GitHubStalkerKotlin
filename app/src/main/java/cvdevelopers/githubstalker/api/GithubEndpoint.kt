@@ -1,20 +1,20 @@
 package cvdevelopers.githubstalker.api
 
 import cvdevelopers.githubstalker.models.User
-import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.http.GET
 import retrofit2.http.Path
 
 interface GithubEndpoint {
 
     @GET ("/users/{id}")
-    fun getUser (@Path("id") user: String) : Observable<User>
+    fun getUser (@Path("id") user: String) : Single<User>
 
     @GET("/users/{id}/following")
-    fun getFollowingUser(@Path("id") user: String): Observable<List<User>>
+    fun getFollowingUser(@Path("id") user: String): Single<List<User>>
 
     @GET("/orgs/{id}/members")
-    fun getOrganizationMember(@Path("id") organization: String) : Observable<List<User>>
+    fun getOrganizationMember(@Path("id") organization: String) : Single<List<User>>
 
     companion object {
         val SERVER = "https://api.github.com"

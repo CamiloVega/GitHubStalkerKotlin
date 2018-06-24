@@ -4,7 +4,6 @@ import cvdevelopers.githubstalker.ui.mvp.model.MainActivityModel
 import cvdevelopers.githubstalker.models.User
 import cvdevelopers.githubstalker.ui.mvp.activities.MainActivity
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.schedulers.Schedulers
 import javax.inject.Inject
 
 class MainActivityPresenter @Inject constructor() {
@@ -16,7 +15,6 @@ class MainActivityPresenter @Inject constructor() {
     fun fetchOrganization(organization: String) {
         view.showProgressDialog(MainActivity.ProgressDialogType.ORGANIZATION)
         model.fetchOrganization(organization)
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe ({
                     userList ->
@@ -35,7 +33,6 @@ class MainActivityPresenter @Inject constructor() {
     fun fetchUser(selectedUser: User) {
         view.showProgressDialog(MainActivity.ProgressDialogType.USER)
         model.fetchUserFollowing(selectedUser)
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe({
                     userData ->

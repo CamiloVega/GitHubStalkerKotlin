@@ -2,36 +2,31 @@ package cvdevelopers.githubstalker.ui.mvp.model
 
 import cvdevelopers.githubstalker.api.GithubEndpoint
 import cvdevelopers.githubstalker.models.User
-import io.reactivex.Observable
+import io.reactivex.Single
 import javax.inject.Inject
 
 class MainActivityModel @Inject constructor(){
 
     @Inject lateinit var endpoint: GithubEndpoint
 
-    fun fetchOrganization(organization: String): Observable<List<User>> {
+    fun fetchOrganization(organization: String): Single<List<User>> {
         return endpoint.getOrganizationMember(organization)
-                .flatMapIterable { list -> list }
-                .map { user -> endpoint.getUser(user.name)}
-                .map { user -> user.blockingFirst() }
+                .flattenAsObservable { it }
+                .flatMapSingle { endpoint.getUser(it.name) }
                 .toList()
-                .toObservable()
     }
 
-    fun fetchUserFollowing(selectedUser: User): Observable<User> {
+    fun fetchUserFollowing(selectedUser: User): Single<User> {
         return endpoint.getFollowingUser(selectedUser.name)
-                .flatMapIterable { list -> list }
-                .map { user -> endpoint.getUser(user.name)}
-                .map { user -> user.blockingFirst() }
+                .flattenAsObservable { it }
+                .flatMapSingle { endpoint.getUser(it.name) }
                 .toList()
-                .toObservable()
-                .flatMap({list -> addListToUser(selectedUser, list)})
-
+                .flatMap({addListToUser(selectedUser, it)})
     }
 
-    fun addListToUser(selectedUser: User, followingList: List<User>): Observable<User>{
+    fun addListToUser(selectedUser: User, followingList: List<User>): Single<User>{
         selectedUser.followingList = followingList
-        return Observable.just(selectedUser)
+        return Single.just(selectedUser)
     }
 
 }
