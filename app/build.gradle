@@ -3,15 +3,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 28
     buildToolsVersion "27.0.3"
     defaultConfig {
         applicationId "cvdevelopers.githubstalker"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 28
         versionCode 1
         versionName "1.0"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
         release {
@@ -24,7 +24,7 @@ android {
 ext {
     daggerVersion = "2.10"
     jsr305Version = "3.0.1"
-    supportLibraryVersion = "25.4.0"
+    supportLibraryVersion = '1.0.0-beta01'
 }
 
 repositories {
@@ -36,22 +36,21 @@ dependencies {
     api "com.jakewharton:butterknife:$butterknife_version"
     kapt "com.jakewharton:butterknife-compiler:$butterknife_version"
 
-
     api "com.google.dagger:dagger-android-support:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     kapt "com.google.dagger:dagger-android-processor:$daggerVersion"
 
-    api "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    androidTestApi('com.android.support.test.espresso:espresso-core:2.2.2', {
+    androidTestApi('androidx.test.espresso:espresso-core:3.1.0-alpha4', {
         exclude group: 'com.android.support', module: 'support-annotations'
         exclude group: 'com.google.code.findbugs'
     })
 
-    api "com.android.support:appcompat-v7:$supportLibraryVersion"
-    api "com.android.support:recyclerview-v7:$supportLibraryVersion"
-    api "com.android.support:support-v4:$supportLibraryVersion"
-    api 'com.android.support.constraint:constraint-layout:1.1.2'
+    api "androidx.appcompat:appcompat:$supportLibraryVersion"
+    api "androidx.recyclerview:recyclerview:$supportLibraryVersion"
+    api "androidx.legacy:legacy-support-v4:$supportLibraryVersion"
+    api 'androidx.constraintlayout:constraintlayout:1.1.2'
     api 'com.squareup.retrofit2:retrofit:2.3.0'
     api 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
     api 'com.squareup.retrofit2:converter-gson:2.3.0'

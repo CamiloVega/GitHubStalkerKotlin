@@ -14,13 +14,12 @@ import javax.inject.Singleton
 
 @Module
 class NetworkClientModule  {
+
     @Provides
     @Singleton
     fun provideGson() = GsonBuilder()
             .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES)
             .create()
-
-
 
     @Provides
     @Singleton

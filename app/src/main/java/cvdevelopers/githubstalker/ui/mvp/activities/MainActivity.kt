@@ -2,14 +2,14 @@ package cvdevelopers.githubstalker.ui.mvp.activities
 
 import android.app.AlertDialog
 import android.app.ProgressDialog
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import cvdevelopers.githubstalker.GithubStalkerApplication
 import cvdevelopers.githubstalker.R
 import cvdevelopers.githubstalker.models.User
-import android.support.v4.app.Fragment
-import android.support.v4.view.MenuItemCompat
-import android.support.v7.widget.SearchView
+import androidx.fragment.app.Fragment
+import androidx.core.view.MenuItemCompat
+import androidx.appcompat.widget.SearchView
 import android.view.Menu
 import android.view.MenuItem
 import cvdevelopers.githubstalker.ui.fragments.UserListFragment
